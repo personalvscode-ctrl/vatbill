@@ -63,6 +63,7 @@ export default function ItemCard({ item, index, onRemove, onChange }: ItemCardPr
             min={1}
             value={item.qty}
             onChange={(e) => onChange({ qty: parseFloat(e.target.value) || 1 })}
+            onFocus={(e) => e.target.select()}
             inputMode="numeric"
             className={`${inputCls} text-center`}
           />
@@ -79,6 +80,7 @@ export default function ItemCard({ item, index, onRemove, onChange }: ItemCardPr
                 min={0}
                 value={item.sellPrice === '' ? '' : item.sellPrice}
                 onChange={(e) => onChange({ sellPrice: e.target.value })}
+                onFocus={(e) => e.target.select()}
                 placeholder="0"
                 inputMode="decimal"
                 className="w-full bg-transparent text-[13px] font-bold text-indigo-700 outline-none placeholder:text-indigo-300"
@@ -98,6 +100,7 @@ export default function ItemCard({ item, index, onRemove, onChange }: ItemCardPr
                   const excl = parseFloat(e.target.value) || 0;
                   onChange({ sellPrice: excl > 0 ? parseFloat((excl * 1.13).toFixed(2)) : '' });
                 }}
+                onFocus={(e) => e.target.select()}
                 placeholder="0"
                 inputMode="decimal"
                 className="w-full bg-transparent text-[13px] font-bold text-orange-700 outline-none placeholder:text-orange-300"
