@@ -71,8 +71,9 @@ export default function Home() {
     setItems(prev => {
       const next = prev.map(it => it.id === id ? { ...it, ...updated } : it);
       const gt = parseFloat(grandTotalInput) || 0;
-      if (gt > 0 && 'sellPrice' in updated) {
-        setGtMode(true);
+
+      if (gtMode && gt > 0 && 'sellPrice' in updated) {
+        // GT is locked by user — adjust qty to match GT
         const sp = parseFloat(String(updated.sellPrice)) || 0;
         if (sp > 0) {
           const rawQty = (gt + (parseFloat(discountAmt) || 0)) / sp;
@@ -80,12 +81,13 @@ export default function Home() {
           recalc(withQty, discountAmt, discountPct);
           return withQty;
         }
-      } else if (gt > 0 && 'qty' in updated) {
-        setGtMode(true);
+      } else if (gtMode && gt > 0 && 'qty' in updated) {
+        // GT is locked by user — adjust sell price to match GT
         const withSp = recalcFromGT(gt, next, discountAmt, discountPct);
         recalc(withSp, discountAmt, discountPct);
         return withSp;
       } else {
+        // No GT lock — recalculate GT freely from items
         setGtMode(false);
         const newTotals = calcTotals(next, parseFloat(discountAmt) || 0, parseFloat(discountPct) || 0);
         setGrandTotalInput(newTotals.grandTotal > 0 ? String(parseFloat(newTotals.grandTotal.toFixed(2))) : '');
