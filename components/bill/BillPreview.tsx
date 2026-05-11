@@ -26,6 +26,7 @@ export default function BillPreview({ items, totals }: BillPreviewProps) {
         padding: '18px 22px 14px',
         fontFamily: 'var(--font-poppins), Poppins, sans-serif',
         fontSize: 11,
+      fontWeight: 600,
       }}
     >
       {/* Header */}
