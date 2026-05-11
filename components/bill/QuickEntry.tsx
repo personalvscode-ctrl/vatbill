@@ -18,7 +18,7 @@ export default function QuickEntry({ value, onChange }: QuickEntryProps) {
           placeholder="e.g. 4000"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          onFocus={(e) => e.target.select()}
+          onFocus={(e) => { const t = e.target; setTimeout(() => t.select(), 0); }}
           className="w-full h-10 px-3 text-base font-bold text-[#1a1a2e] bg-white border border-indigo-300 rounded-lg outline-none focus:ring-2 focus:ring-indigo-200"
         />
       </div>

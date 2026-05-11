@@ -26,7 +26,7 @@ export default function DiscountSection({ discountPct, discountAmt, onPctChange,
             step={0.01}
             value={discountPct}
             onChange={(e) => onPctChange(e.target.value)}
-            onFocus={(e) => e.target.select()}
+            onFocus={(e) => { const t = e.target; setTimeout(() => t.select(), 0); }}
             placeholder="0"
             inputMode="decimal"
             className={inputCls}
@@ -44,7 +44,7 @@ export default function DiscountSection({ discountPct, discountAmt, onPctChange,
             step={0.01}
             value={discountAmt}
             onChange={(e) => onAmtChange(e.target.value)}
-            onFocus={(e) => e.target.select()}
+            onFocus={(e) => { const t = e.target; setTimeout(() => t.select(), 0); }}
             placeholder="0"
             inputMode="decimal"
             className={inputCls}
