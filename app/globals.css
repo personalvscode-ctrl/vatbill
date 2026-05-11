@@ -131,6 +131,22 @@ html, body, * {
   font-family: var(--font-poppins), 'Poppins', sans-serif !important;
 }
 
+/* Prevent iOS Safari zoom on input focus — must be >= 16px */
+input, textarea, select {
+  font-size: 16px !important;
+}
+
+/* Prevent tap highlight flash on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smoother scrolling on mobile */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Print styles */
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
